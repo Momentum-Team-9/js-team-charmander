@@ -1,6 +1,8 @@
-const url = "https://itunes.apple.com/search?"
+const url = "https://proxy-itunes-api.glitch.me/search?"
+const search = document.querySelector('#search')
+console.log(search, "search")
 
-
+(url + "entity=song&" + "term="+ `${searchValue}`+ "&limit=12")
 // Function to create each song card, adding it to the songs section
 // // Make sure to allow space for album image and song details.
 
