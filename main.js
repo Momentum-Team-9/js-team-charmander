@@ -5,7 +5,7 @@ console.log(search, "search")
 form.addEventListener('submit', function (event) {
 event.preventDefault()
 console.log(search.value, "search")
-getSongs(search.value);
+getSongs();
 })
 
 // Function that gets song requests 
@@ -18,8 +18,8 @@ function getSongs() {
     });
 }
 
-
 // Function to create each song card, adding it to the songs section
+
 // // Make sure to allow space for album image and song details.
 
 // Event Listener to pull search results
@@ -27,10 +27,6 @@ function getSongs() {
 // Function to format the search input correctly for the iTunes API
 
 // CRUD function to GET songs by artist or band
-
-
-
-
 
 // Event Listener to play song preview
 
