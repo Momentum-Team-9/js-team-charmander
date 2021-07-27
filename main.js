@@ -2,16 +2,22 @@ const url = "https://proxy-itunes-api.glitch.me/search?"
 const search = document.querySelector('#search')
 console.log(search, "search")
 
+form.addEventListener('submit', function (event) {
+event.preventDefault()
+console.log(search.value, "search")
+getSongs(search.value);
+})
+
+// Function that gets song requests 
 function getSongs() {
-  fetch (url + "entity=song&" + "term="+ `${search.value}`+ "&limit=12")
+  fetch (url + "entity=song&" + "term=" + search.value + "&limit=12")
   
     .then((response) => response.json())
     .then((songsInfo) => {
-      console.log(getSongs, "getSongs");
-      // Add function that displays songs
+      console.log(songsInfo, "songsInfo");
     });
 }
-getSongs();
+
 
 // Function to create each song card, adding it to the songs section
 // // Make sure to allow space for album image and song details.
