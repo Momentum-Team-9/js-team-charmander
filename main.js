@@ -1,26 +1,57 @@
-const url = "https://proxy-itunes-api.glitch.me/search?"
-const search = document.querySelector('#search')
-console.log(search, "search")
+const url = "https://proxy-itunes-api.glitch.me/search?";
+const search = document.querySelector("#search");
+const songSection = document.querySelector("#songs");
+console.log(search, "search");
 
-form.addEventListener('submit', function (event) {
-event.preventDefault()
-console.log(search.value, "search")
-getSongs();
-})
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
+  console.log(search.value, "search");
+  getSongs();
+  form.reset();
+});
 
-// Function that gets song requests 
+// Function that gets song requests
 function getSongs() {
-  fetch (url + "entity=song&" + "term=" + search.value + "&limit=12")
-  
+  fetch(url + "entity=song&" + "term=" + search.value + "&limit=12")
     .then((response) => response.json())
     .then((songsInfo) => {
-      console.log(songsInfo, "songsInfo");
+      console.log(songsInfo.results, "songsInfo");
+      const songsInfoResults = songsInfo.results;
+      renderSongCard(songsInfoResults);
     });
 }
 
 // Function to create each song card, adding it to the songs section
 
 // // Make sure to allow space for album image and song details.
+
+function renderSongCard(data) {
+  for (let i of data) {
+    console.log(data, "data");
+    if ((data[i] = undefined)) {
+      console.log(undefined);
+    } else {
+      const songCard = document.createElement("div");
+      songCard.classList.add("song-card");
+
+      const albumArt = document.createElement("img");
+      albumArt.src = songsInfo.artworkUrl60;
+      songCard.appendChild(albumArt);
+
+      // add song title
+      const songTitle = document.createElement("p");
+      songTitle.classList.add("song-title");
+      songCard.appendChild(songTitle);
+
+      // add artist
+      const artistName = document.createElement("p");
+      artistName.classList.add("artist-name");
+      songCard.appendChild(artistName);
+
+      // add button on top of the image
+    }
+  }
+}
 
 // Event Listener to pull search results
 
