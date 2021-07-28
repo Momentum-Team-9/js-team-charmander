@@ -15,7 +15,8 @@ function getSongs() {
   fetch(url + "entity=song&" + "term=" + search.value + "&limit=12")
     .then((response) => response.json())
     .then((songsInfo) => {
-      console.log(songsInfo.results, "songsInfo");
+      console.log(songsInfo, "songsInfo");
+      console.log(songsInfo.results, "songsInfo.results");
       const songsInfoResults = songsInfo.results;
       
       for (let i of data.results) {
@@ -28,33 +29,39 @@ function getSongs() {
 
 // // Make sure to allow space for album image and song details.
 
-    function renderSongCard (Argument) {
-      const songCard = document.createElement("div");
-      songCard.classList.add("song-card");
+function renderSongCard(data) {
+  for (let i of data) {
+    // console.log(i);
 
-      const albumArt = document.createElement("img");
-      albumArt.src = songsInfo.artworkUrl60;
-      songCard.appendChild(albumArt);
+    const songCard = document.createElement("div");
+    songCard.classList.add("song-card");
+    songSection.appendChild(songCard);
 
-      // add song title
-      const songTitle = document.createElement("p");
-      songTitle.classList.add("song-title");
-      songCard.appendChild(songTitle);
+    const albumArt = document.createElement("img");
+    albumArt.src = i.artworkUrl60;
+    songCard.appendChild(albumArt);
 
-      // add artist
-      const artistName = document.createElement("p");
-      artistName.classList.add("artist-name");
-      songCard.appendChild(artistName);
-      }
-      // add button on top of the image
-  
+    // add song title
+    const song = document.createElement("p");
+    song.innerText = i.trackName;
+    song.classList.add("song-title");
+    songCard.appendChild(song);
 
+    // add artist
+    const artist = document.createElement("p");
+    artist.innerText = i.artistName;
+    artist.classList.add("artist-name");
+    songCard.appendChild(artist);
 
-// Event Listener to pull search results
+    // add button on top of the image
+    const songAudio = document.createElement("div");
+    // song.id.add();
+    songAudio.innerHTML = `<audio control class="audio" src="${i.previewUrl}"></audio>`;
+    songAudio.src = i.previewUrl;
+    songCard.appendChild(songAudio);
+  }
+}
 
-// Function to format the search input correctly for the iTunes API
-
-// CRUD function to GET songs by artist or band
 
 // Event Listener to play song preview
 
