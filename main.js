@@ -6,7 +6,7 @@ console.log(search, "search");
 form.addEventListener("submit", function (event) {
   event.preventDefault();
   console.log(search.value, "search");
-  getSongs();
+  getSongs(search.value);
   form.reset();
 });
 
@@ -15,20 +15,24 @@ function getSongs() {
   fetch(url + "entity=song&" + "term=" + search.value + "&limit=12")
     .then((response) => response.json())
     .then((songsInfo) => {
+      if (songsInfo.resultCount === 0) {
+        const songDiv = document.querySelector('#song-div')
+        songDiv.innerText = "No results"
+      } else {
       console.log(songsInfo, "songsInfo");
       console.log(songsInfo.results, "songsInfo.results");
       const songsInfoResults = songsInfo.results;
-      renderSongCard(songsInfoResults);
-    });
+      renderSongCard(songsInfoResults)
+    }})
 }
 
 // Function to create each song card, adding it to the songs section
+
 // // Make sure to allow space for album image and song details.
 
 function renderSongCard(data) {
   for (let i of data) {
     // console.log(i);
-
     const songCard = document.createElement("div");
     songCard.classList.add("song-card");
     songSection.appendChild(songCard);
@@ -56,7 +60,11 @@ function renderSongCard(data) {
     songAudio.src = i.previewUrl;
     songCard.appendChild(songAudio);
   }
+
+  
 }
+
+
 
 // Event Listener to play song preview
 
