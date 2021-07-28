@@ -1,0 +1,32 @@
+body {
+  box-sizing: border-box;
+  font-family: "Roboto Mono", monospace;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+}
+
+.bebas {
+  font-family: "Bebas Neue", cursive;
+  font-size: 5em;
+}
+
+.song-div {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+  padding: 50px;
+}
+
+.song-card {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  text-align: center;
+  width: 125px;
+  margin: 50px;
+}
+
+.song-title {
+  font-size: 0.75em;
+}
