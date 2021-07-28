@@ -4,16 +4,39 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="main.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Mono:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
     <title>Music Search</title>
   </head>
   <body>
-    <header>
-      <h1>Music Search Site</h1>
-    </header>
-    <form id="form" action="">
-      <input type="search" id="search" placeholder="Search by artist or band" />
-      <button type="submit">Search</button>
-      <section id="songs"></section>
+    <section class="hero is-medium has-background-dark">
+  <div class="hero-body">
+    <p class="title bebas has-text-primary-light my-6">
+      Music Preview 
+    </p>
+    <p class="subtitle">
+      <form id="form" action="">
+      <input
+        type="search"
+        id="search"
+        class="input is-primary is-large"
+        placeholder="Search by artist or band"
+      />
+      <button type="submit" class="button is-primary my-5">Search</button>
     </form>
+    </p>
+  </div>
+    <section id="songs" class="has-background-white">
+      <div id="song-div"></div>
+    </section>
   </body>
 </html>

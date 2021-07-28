@@ -1,6 +1,6 @@
 const url = "https://proxy-itunes-api.glitch.me/search?";
 const search = document.querySelector("#search");
-const songSection = document.querySelector("#songs");
+const songSection = document.querySelector("#song-div");
 console.log(search, "search");
 
 form.addEventListener("submit", function (event) {
@@ -38,7 +38,7 @@ function renderSongCard(data) {
     songSection.appendChild(songCard);
 
     const albumArt = document.createElement("img");
-    albumArt.src = i.artworkUrl60;
+    albumArt.src = i.artworkUrl100;
     songCard.appendChild(albumArt);
 
     // add song title
