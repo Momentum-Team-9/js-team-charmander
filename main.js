@@ -50,10 +50,11 @@ function renderSongCard(data) {
     songCard.appendChild(artist);
 
     // add button on top of the image
-    const songAudio = document.createElement("div");
+    const songAudio = document.createElement("audio");
     // song.id.add();
-    songAudio.innerHTML = `<audio control class="audio" src="${i.previewUrl}"></audio>`;
+    songAudio.classList.add("audio");
     songAudio.src = i.previewUrl;
+    songAudio.controls = true;
     songCard.appendChild(songAudio);
   }
 }
