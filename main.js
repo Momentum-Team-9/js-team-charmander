@@ -17,20 +17,18 @@ function getSongs() {
     .then((songsInfo) => {
       console.log(songsInfo.results, "songsInfo");
       const songsInfoResults = songsInfo.results;
-      renderSongCard(songsInfoResults);
-    });
+      
+      for (let i of data.results) {
+        console.log(data, "data");
+        renderSongCard(songsInfoResults);
+    }
+})
 }
-
 // Function to create each song card, adding it to the songs section
 
 // // Make sure to allow space for album image and song details.
 
-function renderSongCard(data) {
-  for (let i of data) {
-    console.log(data, "data");
-    if ((data[i] = undefined)) {
-      console.log(undefined);
-    } else {
+    function renderSongCard (Argument) {
       const songCard = document.createElement("div");
       songCard.classList.add("song-card");
 
@@ -47,11 +45,10 @@ function renderSongCard(data) {
       const artistName = document.createElement("p");
       artistName.classList.add("artist-name");
       songCard.appendChild(artistName);
-
+      }
       // add button on top of the image
-    }
-  }
-}
+  
+
 
 // Event Listener to pull search results
 
