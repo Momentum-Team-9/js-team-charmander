@@ -17,6 +17,7 @@ function getSongs() {
       if (response.status !== 200) {
         const songDiv = document.querySelector("#song-div");
         songDiv.innerText = "Please search again";
+        songDiv.classList.add("no-results");
         return false;
       } else {
         return response.json();
@@ -28,7 +29,8 @@ function getSongs() {
       }
       if (songsInfo.resultCount === 0) {
         const songDiv = document.querySelector("#song-div");
-        songDiv.innerText = "No results";
+        songDiv.innerHTML = "No Results";
+        songDiv.classList.add("no-results");
       } else {
         console.log(songsInfo, "songsInfo");
         console.log(songsInfo.results, "songsInfo.results");
