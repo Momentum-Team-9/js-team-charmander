@@ -5,10 +5,23 @@ console.log(search, "search");
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
+  songSection.innerHTML = "";
   console.log(search.value, "search");
   getSongs(search.value);
   form.reset();
 });
+
+document.addEventListener("play", function (event){
+  event.preventDefault();
+  const audios = document.getElementsByTagName("audio")
+  for (let song of audios){
+    if (song != event.target){
+      song.pause()
+    }
+  }
+}, true)
+
+search.required = true
 
 // Function that gets song requests
 function getSongs() {
