@@ -13,23 +13,32 @@ form.addEventListener("submit", function (event) {
 // Function that gets song requests
 function getSongs() {
   fetch(url + "entity=song&" + "term=" + search.value + "&limit=12")
-    .then((response) => response.json())
-    .then((songsInfo) => {
-      if (songsInfo.resultCount === 0) {
-        const songDiv = document.querySelector('#song-div')
-        songDiv.innerText = "No results"
+    .then((response) => {
+      if (response.status !== 200) {
+        const songDiv = document.querySelector("#song-div");
+        songDiv.innerText = "Please search again";
+        return false;
       } else {
-      console.log(songsInfo, "songsInfo");
-      console.log(songsInfo.results, "songsInfo.results");
-      const songsInfoResults = songsInfo.results;
-      renderSongCard(songsInfoResults)
-    }})
+        return response.json();
+      }
+    })
+    .then((songsInfo) => {
+      if (!songsInfo) {
+        return false;
+      }
+      if (songsInfo.resultCount === 0) {
+        const songDiv = document.querySelector("#song-div");
+        songDiv.innerText = "No results";
+      } else {
+        console.log(songsInfo, "songsInfo");
+        console.log(songsInfo.results, "songsInfo.results");
+        const songsInfoResults = songsInfo.results;
+        renderSongCard(songsInfoResults);
+      }
+    });
 }
 
 // Function to create each song card, adding it to the songs section
-
-// // Make sure to allow space for album image and song details.
-
 function renderSongCard(data) {
   for (let i of data) {
     // console.log(i);
@@ -53,20 +62,11 @@ function renderSongCard(data) {
     artist.classList.add("artist-name");
     songCard.appendChild(artist);
 
-    // add button on top of the image
+    // add audio to container
     const songAudio = document.createElement("audio");
-    // song.id.add();
     songAudio.classList.add("audio");
     songAudio.src = i.previewUrl;
     songAudio.controls = true;
     songCard.appendChild(songAudio);
   }
-
-  
 }
-
-
-
-// Event Listener to play song preview
-
-// Event Listener to stop song preview
