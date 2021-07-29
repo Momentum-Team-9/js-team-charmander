@@ -30,15 +30,6 @@ body {
   padding: 20px;
 }
 
-.img-overlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  text-align: center;
-}
-
 .song-title {
   font-size: 1em;
 }
